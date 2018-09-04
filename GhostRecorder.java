@@ -49,6 +49,9 @@ public class GhostRecorder {
     public void recordDpadRight(boolean val) {
         buttonValues.setValue(ButtonValues.dpadRight,val);
     }
+    public void recordrightbumper(boolean val) { buttonValues.setValue(ButtonValues.rightbumper,val);}
+    public void recordleftbumper(boolean val) { buttonValues.setValue(ButtonValues.leftbumper,val);}
+    }
 
     public String getStringOfChangedVals(ControllerValues vals)
     {

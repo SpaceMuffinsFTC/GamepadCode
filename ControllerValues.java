@@ -10,8 +10,8 @@ public class ControllerValues<T> {
 
     public ControllerValues(T defaultVal,ArrayList<T> vals,ArrayList<String> syms) {
         defaultValue=defaultVal;
-        values=new ArrayList<T>(vals);
-        previousValues=new ArrayList<T>(vals);
+        values=new ArrayList<T>();
+        previousValues=new ArrayList<T>();
         symbols=syms;
 
     }
