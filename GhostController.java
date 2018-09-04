@@ -167,4 +167,12 @@ public class GhostController {
         return buttonValues.getValue(ButtonValues.dpadRight);
     }
 
+    public boolean rightbumper() {
+        return buttonValues.getValue(ButtonValues.rightbumper);
+    }
+
+    public boolean leftbumper() {
+        return buttonValues.getValue(ButtonValues.leftbumper);
+    }
+
 }
