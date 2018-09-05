@@ -16,10 +16,10 @@ public class ButtonValues extends ControllerValues<Boolean> {
     public final static String leftbumper = "lb";
 
 
+
     public ButtonValues() {
         super(false, new ArrayList<String>(Arrays.asList(new String[]{buttonA,buttonB,buttonX,buttonY,dpadUp,dpadDown,dpadLeft,dpadRight,rightbumper,leftbumper})))
         ;}
-
 
 
 
