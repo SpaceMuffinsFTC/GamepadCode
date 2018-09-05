@@ -1,10 +1,16 @@
+package org.firstinspires.ftc.teamcode;
+
 import java.util.*;
 
 public class GhostRecorder {
     private String instructions="";
     private int updatesSinceValueChanged=0;
     private StickValues stickValues=new StickValues();
-    private ButtonValues buttonValues=new ButtonValues();
+    private ButtonValues buttonValues= new ButtonValues();
+
+    public GhostRecorder() {
+
+    }
 
 
 
@@ -49,6 +55,9 @@ public class GhostRecorder {
     public void recordDpadRight(boolean val) {
         buttonValues.setValue(ButtonValues.dpadRight,val);
     }
+    public void recordrightbumper(boolean val) { buttonValues.setValue(ButtonValues.rightbumper,val);}
+    public void recordleftbumper(boolean val) { buttonValues.setValue(ButtonValues.leftbumper,val);}
+
 
     public String getStringOfChangedVals(ControllerValues vals)
     {
@@ -85,5 +94,3 @@ public class GhostRecorder {
         return instructions+String.valueOf(updatesSinceValueChanged);
     }
 }
-
-

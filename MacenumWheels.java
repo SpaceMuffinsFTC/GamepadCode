@@ -1,10 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.util.Range;
-import java.util.*;
 
 @TeleOp
 
@@ -13,7 +11,6 @@ public class MacenumWheels extends OpMode{
    int MAX_VALUE = 1;
    public void init(){
       robot.init(hardwareMap);
-      telemetry.addData("STATUS", "Initialized");
    }
 
    public void init_loop(){
