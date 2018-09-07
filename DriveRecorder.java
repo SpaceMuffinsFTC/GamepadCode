@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.GhostAutonomous;
 
+package org.firstinspires.ftc.teamcode;
+
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -25,7 +27,7 @@ public class DriveRecorder extends OpMode {
         ghostRecorder.recordButtonB(gamepad1.b);
         ghostRecorder.recordButtonX(gamepad1.x);
         ghostRecorder.recordButtonY(gamepad1.y);
-        //and B,X or Y
+
 
         ghostRecorder.recordDpadDown(gamepad1.dpad_down);
         ghostRecorder.recordDpadUp(gamepad1.dpad_up);

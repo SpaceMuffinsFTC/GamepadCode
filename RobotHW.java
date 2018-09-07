@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+
+
 import com.qualcomm.robotcore.hardware.Gyroscope;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -8,35 +10,34 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 
 public class RobotHW {
- /*   private Gyroscope imu;
+    /*private Gyroscope imu;
     private DcMotor leftBack;
     private DcMotor rightBack;
     private DcMotor leftFront;
     private DcMotor rightFront;
     private Servo left;
-    private Servo right;
-*/
-    // todo: write your code here
-       /* Public OpMode members. */
-    public DcMotor  leftBack   = null;
-    public DcMotor  rightBack  = null;
-    public DcMotor  leftFront    = null;
-    public DcMotor  rightFront    = null;
-    public Servo    leftClaw    = null;
-    public Servo    rightClaw   = null;
+    private Servo right;/*
 
-    public static final double MID_SERVO       =  0.5 ;
-    public static final double ARM_UP_POWER    =  0.45 ;
-    public static final double ARM_DOWN_POWER  = -0.45 ;
+
+       /* Public OpMode members. */
+    public DcMotor  leftBack;
+    public DcMotor  rightBack;
+    public DcMotor  leftFront;
+    public DcMotor  rightFront;
+    public Servo    leftClaw;
+    public Servo    rightClaw;
+    public Servo    rightArm;
+    public Servo    leftArm;
+
+    public final double MID_SERVO       =  0.0 ;
+    public final double ARM_UP_POWER    =  0.5 ;
+    public final double ARM_DOWN_POWER  = -0.5 ;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
     private ElapsedTime period  = new ElapsedTime();
 
-    /* Constructor */
-    public RobotHW(){
 
-    }
 
     /* Initialize standard Hardware interfaces */
     public void init(HardwareMap ahwMap) {
@@ -48,7 +49,7 @@ public class RobotHW {
         rightBack = hwMap.get(DcMotor.class, "rightBack");
         leftFront  = hwMap.get(DcMotor.class, "leftFront");
         rightFront = hwMap.get(DcMotor.class, "rightFront");
-        
+
         leftBack.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         rightBack.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
         leftFront.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
@@ -67,10 +68,14 @@ public class RobotHW {
         leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
+
         // Define and initialize ALL installed servos.
         leftClaw  = hwMap.get(Servo.class, "left");
         rightClaw = hwMap.get(Servo.class, "right");
+        leftArm = hwMap.get(Servo.class,"leftArm");
+        rightArm = hwMap.get(Servo.class, "rightArm");
         leftClaw.setPosition(MID_SERVO);
         rightClaw.setPosition(MID_SERVO);
     }
 }
+

@@ -1,3 +1,4 @@
+package org.firstinspires.ftc.teamcode;
 import java.util.*;
 
 public class ControllerValues<T> {
@@ -8,7 +9,7 @@ public class ControllerValues<T> {
     private ArrayList<String> symbols;
 
 
-    public ControllerValues(T defaultVal,ArrayList<T> vals,ArrayList<String> syms) {
+    public ControllerValues(T defaultVal, ArrayList<String> syms) {
         defaultValue=defaultVal;
         values=new ArrayList<T>();
         previousValues=new ArrayList<T>();

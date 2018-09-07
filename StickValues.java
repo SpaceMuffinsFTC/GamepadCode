@@ -1,4 +1,7 @@
 
+
+package org.firstinspires.ftc.teamcode;
+
 import java.util.*;
 public class StickValues extends ControllerValues<Double> {
     public final static String leftStickY="ly";

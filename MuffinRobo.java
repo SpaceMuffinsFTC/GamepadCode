@@ -1,32 +1,3 @@
-/* Copyright (c) 2017 FIRST. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted (subject to the limitations in the disclaimer below) provided that
- * the following conditions are met:
- *
- * Redistributions of source code must retain the above copyright notice, this list
- * of conditions and the following disclaimer.
- *
- * Redistributions in binary form must reproduce the above copyright notice, this
- * list of conditions and the following disclaimer in the documentation and/or
- * other materials provided with the distribution.
- *
- * Neither the name of FIRST nor the names of its contributors may be used to endorse or
- * promote products derived from this software without specific prior written permission.
- *
- * NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS
- * LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -56,25 +27,18 @@ public class MuffinRobo extends LinearOpMode {
 
     /* Declare OpMode members. */
     RobotHW robot           = new RobotHW();   // Use a Pushbot's hardware
-                                                               // could also use HardwarePushbotMatrix class.
-    double          clawOffset      = 0;                       // Servo mid position
-    final double    CLAW_SPEED      = 0.02 ;                   // sets rate to move servo
     private ElapsedTime     runtime = new ElapsedTime();
     double     FORWARD_SPEED = gamepad1.left_stick_y;  // was 0.6 power
-    static final double     TURN_SPEED    = 0.5;
- 
+
     @Override
     public void runOpMode() {
-        double left= 0.1;
-        double right = 0.1;
-        double drive;
-        double turn;
-        double max;
 
         /* Initialize the hardware variables.
          * The init() method of the hardware class does all the work here
          */
         robot.init(hardwareMap);
+        MacenumWheels mace = new MacenumWheels();
+        ClawArm clawArm = new ClawArm();
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -82,71 +46,29 @@ public class MuffinRobo extends LinearOpMode {
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
-        robot.leftBack.setPower(FORWARD_SPEED);
-        robot.rightBack.setPower(-FORWARD_SPEED);
-        robot.leftFront.setPower(FORWARD_SPEED);
-        robot.rightFront.setPower(-FORWARD_SPEED);
-         runtime.reset();
-        
-        while (runtime.seconds() < 3.0) {
+
+        runtime.reset();
+
+        while (runtime.seconds() < 30) {
             // Send telemetry message to signify robot waiting;
             telemetry.addData("Move forward", "%.2f", FORWARD_SPEED);    //
             telemetry.update();
         }
-         runtime.reset();
-         
+        runtime.reset();
+
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            // Run wheels in POV mode (note: The joystick goes negative when pushed forwards, so negate it)
-            // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
-            // This way it's also easy to just drive straight, or just turn.
-            drive = -gamepad1.left_stick_y;
-            turn  =  gamepad1.right_stick_x;
+            mace.loop();
 
-            // Combine drive and turn for blended motion.
-            left  = drive + turn;
-            right = drive - turn;
+            clawArm.loop();
 
-            // Normalize the values so neither exceed +/- 1.0
-            max = Math.max(Math.abs(left), Math.abs(right));
-            if (max > 1.0)
-            {
-                left /= max;
-                right /= max;
-            }
 
-            // Output the safe vales to the motor drives.
-            robot.leftBack.setPower(left);
-            robot.rightBack.setPower(right);
 
-            // Use gamepad left & right Bumpers to open and close the claw
-            if (gamepad1.right_bumper)
-                clawOffset += CLAW_SPEED;
-            else if (gamepad1.left_bumper)
-                clawOffset -= CLAW_SPEED;
-
-            // Move both servos to new position.  Assume servos are mirror image of each other.
-            clawOffset = Range.clip(clawOffset, -0.5, 0.5);
-            robot.leftClaw.setPosition(robot.MID_SERVO + clawOffset);
-            robot.rightClaw.setPosition(robot.MID_SERVO - clawOffset);
-/*
-            // Use gamepad buttons to move arm up (Y) and down (A)
-            if (gamepad1.y)
-                robot.leftClaw.setPower(robot.ARM_UP_POWER);
-            else if (gamepad1.a)
-                robot.leftClaw.setPower(robot.ARM_DOWN_POWER);
-            else
-                robot.leftClaw.setPower(0.0);
-*/
-            // Send telemetry message to signify robot running;
-            telemetry.addData("claw",  "Offset = %.2f", clawOffset);
-            telemetry.addData("leftClaw",  "%.2f", left);
-            telemetry.addData("rightClaw", "%.2f", right);
-            telemetry.update();
 
             // Pace this loop so jaw action is reasonable speed.
             sleep(50);
         }
     }
 }
+

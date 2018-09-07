@@ -1,3 +1,5 @@
+package org.firstinspires.ftc.teamcode;
+
 public class GhostController {
 
 
@@ -176,3 +178,4 @@ public class GhostController {
     }
 
 }
+
