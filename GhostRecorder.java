@@ -14,26 +14,41 @@ public class GhostRecorder {
 
 
 
-    public void recordLeftStickY(double lsticky) {
+    public void recordLeftStickY(float lsticky) {
         stickValues.setValue(StickValues.leftStickY,lsticky);
     }
 
-    public void recordRightStickY(double rsticky) {
+    public void recordRightStickY(float rsticky) {
         stickValues.setValue(StickValues.rightStickY,rsticky);
     }
 
-    public void recordLeftStickX(double lstickx) {
+    public void recordLeftStickX(float lstickx) {
         stickValues.setValue(StickValues.leftStickX,lstickx);
     }
 
-    public void recordRightStickX(double rstickx) {
+    public void recordRightStickX(float rstickx) {
         stickValues.setValue(StickValues.rightStickX,rstickx);
+    }
+
+    public void recordRightTrigger(float rt){
+        stickValues.setValue(StickValues.rightTrigger, rt);
+    }
+
+    public void recordLeftTrigger(float lt){
+        stickValues.setValue(StickValues.leftTrigger, lt);
+    }
+
+    public void recordRightStickY2(float ry2){
+        stickValues.setValue(StickValues.rightStickY2, ry2);
+    }
+
+    public void recordLeftStickY2(float ly2){
+        stickValues.setValue(StickValues.leftStickY2, ly2);
     }
 
     public void recordButtonX(boolean val) {
         buttonValues.setValue(ButtonValues.buttonX,val);
     }
-
     public void recordButtonY(boolean val) {
         buttonValues.setValue(ButtonValues.buttonY,val);
     }
@@ -57,6 +72,7 @@ public class GhostRecorder {
     }
     public void recordrightbumper(boolean val) { buttonValues.setValue(ButtonValues.rightbumper,val);}
     public void recordleftbumper(boolean val) { buttonValues.setValue(ButtonValues.leftbumper,val);}
+
 
 
     public String getStringOfChangedVals(ControllerValues vals)
