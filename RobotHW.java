@@ -10,13 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 
 public class RobotHW {
-    /*private Gyroscope imu;
-    private DcMotor leftBack;
-    private DcMotor rightBack;
-    private DcMotor leftFront;
-    private DcMotor rightFront;
-    private Servo left;
-    private Servo right;/*
+    
 
 
        /* Public OpMode members. */
