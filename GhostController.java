@@ -87,7 +87,7 @@ public class GhostController {
                     }
                     else
                     {
-                        stickValues.setValue(beforeColon,Double.parseDouble(afterColon));
+                        stickValues.setValue(beforeColon,Float.parseFloat(afterColon));
                     }
 
                     update();
@@ -121,21 +121,25 @@ public class GhostController {
 
 
 
-    public double leftStickY() {
+    public float leftStickY() {
         return stickValues.getValue(StickValues.leftStickY);
     }
 
-    public double leftStickX() {
+    public float leftStickX() {
         return stickValues.getValue(StickValues.leftStickX);
     }
 
-    public double rightStickY() {
+    public float rightStickY() {
         return stickValues.getValue(StickValues.rightStickY);
     }
 
-    public double rightStickX() {
+    public float rightStickX() {
         return stickValues.getValue(StickValues.rightStickX);
     }
+
+    public float rightStickY2() {return stickValues.getValue(StickValues.rightStickY2);}
+
+    public float leftStickY2(){return stickValues.getValue(StickValues.leftStickY2);}
 
     public boolean buttonA() {
         return buttonValues.getValue(ButtonValues.buttonA);

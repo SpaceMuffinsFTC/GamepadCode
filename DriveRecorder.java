@@ -1,5 +1,3 @@
-package org.firstinspires.ftc.teamcode.GhostAutonomous;
-
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -34,8 +32,11 @@ public class DriveRecorder extends OpMode {
         ghostRecorder.recordDpadRight(gamepad1.dpad_right);
         ghostRecorder.recordDpadLeft(gamepad1.dpad_left);
 
-        ghostRecorder.recordrightbumper(gamepad1.right_bumper);
-        ghostRecorder.recordleftbumper(gamepad1.left_bumper);
+        ghostRecorder.recordLeftTrigger(gamepad2.left_trigger);
+        ghostRecorder.recordRightTrigger(gamepad2.right_trigger);
+
+        ghostRecorder.recordLeftStickY2(gamepad2.left_stick_y);
+        ghostRecorder.recordRightStickY2(gamepad2.right_stick_y);
 
         //code to drive robot
         //have to add code to drive bot
