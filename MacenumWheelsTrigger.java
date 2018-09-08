@@ -9,12 +9,15 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 public class MacenumWheelsTrigger extends OpMode {
+
     RobotHW robot = new RobotHW();
+
     int maxvalue = 1;
+
     float MacenumPowerLeft = gamepad1.left_trigger;
     float MacenumPowerRight = gamepad1.right_trigger;
 
-    @Override
+    
     public void init() {
         robot.init(hardwareMap);
 
