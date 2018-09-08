@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.robot.Robot;
@@ -26,7 +27,7 @@ import com.qualcomm.robotcore.util.Range;
 public class MuffinRobo extends LinearOpMode {
 
     /* Declare OpMode members. */
-    RobotHW robot           = new RobotHW();   // Use a Pushbot's hardware
+    RobotHW robot           = new RobotHW();
     private ElapsedTime     runtime = new ElapsedTime();
     double     FORWARD_SPEED = gamepad1.left_stick_y;  // was 0.6 power
 
@@ -49,7 +50,7 @@ public class MuffinRobo extends LinearOpMode {
 
         runtime.reset();
 
-        while (runtime.seconds() < 30) {
+        while (runtime.seconds() < 3.0) {
             // Send telemetry message to signify robot waiting;
             telemetry.addData("Move forward", "%.2f", FORWARD_SPEED);    //
             telemetry.update();
@@ -65,8 +66,7 @@ public class MuffinRobo extends LinearOpMode {
 
 
 
-
-            // Pace this loop so jaw action is reasonable speed.
+            // Pace this loop so action is reasonable speed.
             sleep(50);
         }
     }
