@@ -35,20 +35,19 @@ public class ClawArm extends OpMode {
             robot.leftClaw.setPosition(armOffset);
         }
 
-        float rightStickY2 = gamepad2.right_stick_y;
         float leftStickY2 = gamepad2.left_stick_y;
 
-        if(leftStickY2 > 0){
+        if(leftStickY2 < 0){
             robot.arm.setDirection(DcMotorSimple.Direction.FORWARD);
             robot.arm.setPower(1.0);
         }
 
-        if(rightStickY2 > 0){
+        if(leftStickY2 > 0){
             robot.arm.setDirection(DcMotorSimple.Direction.FORWARD);
             robot.arm.setPower(-1.0);
         }
 
-        if(rightStickY2 == 0.0f && leftStickY2 == 0.0f){
+        if(leftStickY2 == 0.0f){
             robot.arm.setPower(armOffset);
         }
     }
