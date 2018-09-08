@@ -9,15 +9,11 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 public class MacenumWheels extends OpMode{
    RobotHW robot = new RobotHW();
    int MAX_VALUE = 1;
+
    public void init(){
       robot.init(hardwareMap);
    }
 
-   public void init_loop(){
-   }
-
-   public void start(){
-   }
 
    public void loop(){
       double G1rightStickY = gamepad1.right_stick_y;
