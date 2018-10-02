@@ -8,19 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
-/**
- * This OpMode uses the common Pushbot hardware class to define the devices on the robot.
- * All device access is managed through the HardwarePushbot class.
- * The code is structured as a LinearOpMode
- *
- * This particular OpMode executes a POV Game style Teleop for a PushBot
- * In this mode the left stick moves the robot FWD and back, the Right stick turns left and right.
- * It raises and lowers the claw using the Gampad Y and A buttons respectively.
- * It also opens and closes the claws slowly using the left and right Bumper buttons.
- *
- * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
- * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
- */
+
 
 @TeleOp(name="MuffinRobo: Teleop POV", group="Practice")
 
@@ -39,7 +27,7 @@ public class MuffinRobo extends LinearOpMode {
          */
         robot.init(hardwareMap);
         MacenumWheelsTrigger macetrig = new MacenumWheelsTrigger();
-        ClawArm clawArm = new ClawArm();
+        LinearSlide lSlide = new LinearSlide();
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -62,7 +50,7 @@ public class MuffinRobo extends LinearOpMode {
 
             macetrig.loop();
 
-            clawArm.loop();
+            lSlide.loop();
 
 
 
