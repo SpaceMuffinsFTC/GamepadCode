@@ -11,19 +11,19 @@ public class SimpleAutonomous {
 
         waitForStart();
 
-        drive(1.0);
+        drive(0.8);
         Thread.sleep(2000);
         stopDriving();
         Thread.sleep(500);
-        turnRight(1.0);
+        turnRight(0.8));
         Thread.sleep(1000);
         stopDriving();
         Thread.sleep(500);
-        turnLeft(1.0);
+        turnLeft(0.8);
         Thread.sleep(1000);
         stopDriving();
         Thread.sleep(500);
-        drive(-1.0);
+        drive(-0.8));
         Thread.sleep(2000);
         stopDriving();
 
@@ -56,4 +56,3 @@ public class SimpleAutonomous {
 
 
 }
-    
