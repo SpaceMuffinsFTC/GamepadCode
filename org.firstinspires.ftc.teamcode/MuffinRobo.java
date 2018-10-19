@@ -1,4 +1,4 @@
- package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -28,6 +28,7 @@ public class MuffinRobo extends LinearOpMode {
         robot.init(hardwareMap);
         MacenumWheelsTrigger macetrig = new MacenumWheelsTrigger();
         LinearSlide lSlide = new LinearSlide();
+        MineralArm arm = new MineralArm();
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "Hello Driver");    //
@@ -39,7 +40,7 @@ public class MuffinRobo extends LinearOpMode {
         runtime.reset();
 
         while (runtime.seconds() < 3.0) {
-            // Send telemetry message to signify robot waiting;
+
             telemetry.addData("Move forward", "%.2f", FORWARD_SPEED);    //
             telemetry.update();
         }
@@ -52,7 +53,7 @@ public class MuffinRobo extends LinearOpMode {
 
             lSlide.loop();
 
-
+            arm.loop();
 
             // Pace this loop so action is reasonable speed.
             sleep(50);
