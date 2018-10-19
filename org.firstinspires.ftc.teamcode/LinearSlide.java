@@ -14,8 +14,13 @@ public class LinearSlide extends OpMode {
 
     @Override
     public void loop() {
+
+        double rightTrigger2 = gamepad2.right_trigger;
+        robot.lock.setPosition(rightTrigger2);
+
         double rightstickY2 = gamepad2.right_stick_y;
         robot.linearSlide.setPower(rightstickY2);
+
     }
 
     public void stop(){
