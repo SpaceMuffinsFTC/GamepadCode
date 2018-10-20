@@ -28,7 +28,7 @@ public class Autonomous1 extends LinearOpMode {
 
         while(opModeIsActive()){
 
-            while(runtime.seconds() < 2.5){
+            while(runtime.seconds() < 2){
                 upDown.robotDown();
             }
 

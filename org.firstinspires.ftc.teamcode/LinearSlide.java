@@ -7,6 +7,8 @@ public class LinearSlide extends OpMode {
 
     RobotHW robot = new RobotHW();
 
+    double maxValue = 0.7;
+
     @Override
     public void init() {
         robot.init(hardwareMap);
@@ -20,6 +22,11 @@ public class LinearSlide extends OpMode {
 
         double rightstickY2 = gamepad2.right_stick_y;
         robot.linearSlide.setPower(rightstickY2);
+
+        if(gamepad2.right_stick_y > 0.7){
+            robot.linearSlide.setPower(maxValue);
+
+        }
 
     }
 
