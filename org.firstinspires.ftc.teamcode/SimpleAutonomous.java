@@ -11,20 +11,21 @@ public class SimpleAutonomous {
 
         waitForStart();
 
-        drive(0.8);
+        drive(0.5);
         Thread.sleep(2000);
         stopDriving();
         Thread.sleep(500);
-        turnRight(0.8));
+        turnRight(0.5));
         Thread.sleep(1000);
         stopDriving();
         Thread.sleep(500);
-        turnLeft(0.8);
+        turnLeft(0.5);
         Thread.sleep(1000);
         stopDriving();
         Thread.sleep(500);
-        drive(-0.8));
+        drive(-0.5);
         Thread.sleep(2000);
+        //my code is good
         stopDriving();
 
     }
@@ -37,7 +38,10 @@ public class SimpleAutonomous {
     }
 
     public void stopDriving(){
-        driveForward(0);
+        for(int i=0.5; i=0; i-0.1) {
+            driveForward(i);
+            Thread.sleep(250);
+        }
     }
 
     public void turnRight(double power){
