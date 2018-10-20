@@ -10,7 +10,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 public class MacenumWheelsTrigger extends OpMode {
 
-    RobotHW robot = new RobotHW();
+    private RobotHW robot;
+    public MacenumWheelsTrigger(RobotHW robot){ this.robot = robot;
+    }
 
     double maxvalue = 0.8;
 

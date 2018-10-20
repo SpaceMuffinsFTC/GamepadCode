@@ -5,7 +5,9 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class LinearSlide extends OpMode {
 
-    RobotHW robot = new RobotHW();
+    private RobotHW robot;
+    public LinearSlide(RobotHW robot){ this.robot = robot;
+    }
 
     double maxValue = 0.7;
 

@@ -9,10 +9,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @com.qualcomm.robotcore.eventloop.opmode.Autonomous
 
 public class Autonomous1 extends LinearOpMode {
+    private RobotHW robot;
+    public Autonomous1(RobotHW robot){ this.robot = robot;
+    }
 
     @Override
     public void runOpMode(){
-        RobotHW robot = new RobotHW();
         AndroidSensors sensors = new AndroidSensors();
         ElapsedTime runtime = new ElapsedTime();
         RobotUpDown upDown = new RobotUpDown();

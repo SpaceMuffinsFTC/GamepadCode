@@ -4,7 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 public class MineralArm extends OpMode {
 
-    RobotHW robot = new RobotHW();
+    private RobotHW robot;
+    public MineralArm(RobotHW robot){ this.robot = robot;
+    }
 
     @Override
     public void init(){

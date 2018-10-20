@@ -5,10 +5,12 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Autonomous2 extends LinearOpMode{
+    private RobotHW robot;
+    public Autonomous2(RobotHW robot){ this.robot = robot;
+    }
 
     @Override
     public void runOpMode(){
-        RobotHW robot = new RobotHW();
         RobotUpDown upDown = new RobotUpDown();
         ElapsedTime runTime = new ElapsedTime();
 
