@@ -25,7 +25,7 @@ public class SimpleAutonomous {
         Thread.sleep(500);
         drive(-0.5);
         Thread.sleep(2000);
-        //my code is good
+        //my code is very good
         stopDriving();
 
     }
