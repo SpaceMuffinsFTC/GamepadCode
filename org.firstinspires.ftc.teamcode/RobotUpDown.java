@@ -4,7 +4,10 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class RobotUpDown {
 
-    RobotHW robot = new RobotHW();
+    private RobotHW robot;
+    public RobotUpDown(RobotHW robot){
+        this.robot = robot;
+    }
 
     public void robotDown() {
         robot.lock.setPosition(0.5);
