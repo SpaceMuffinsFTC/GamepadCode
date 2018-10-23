@@ -16,7 +16,7 @@ public class MineralArm extends OpMode {
     @Override
     public void loop(){
 
-        float leftStickY2 = gamepad2.left_stick_y;
+        double leftStickY2 = gamepad2.left_stick_y;
         robot.armChain.setPower(leftStickY2);
     }
 }
