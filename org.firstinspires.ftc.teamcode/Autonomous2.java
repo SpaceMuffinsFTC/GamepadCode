@@ -11,7 +11,7 @@ public class Autonomous2 extends LinearOpMode{
 
     @Override
     public void runOpMode(){
-        RobotUpDown upDown = new RobotUpDown();
+        RobotUpDown upDown = new RobotUpDown(robot);
         ElapsedTime runTime = new ElapsedTime();
 
         double maxPower = 0.8;
