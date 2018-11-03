@@ -1,46 +1,47 @@
 package org.firstinspires.ftc.teamcode;
 
 import android.content.Context;
-import android.widget.Toast;
-
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import android.widget.Toast;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import org.firstinspires.ftc.teamcode.RobotHW;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+
 
 public class MacenumWheelsTrigger extends OpMode {
+
     // defining and initializing variables
     private RobotHW robot;
     double MAXVALUE = 0.8;
-    double MacenumPowerLeft = gamepad1.left_trigger;
-    double MacenumPowerRight = gamepad1.right_trigger;
+    //  double MacenumPowerLeft = gamepad1.left_trigger;
+    //double MacenumPowerRight = gamepad1.right_trigger;
     double left= 0.1;
     double right = 0.1;
     double drive;
     double turn;
-    Gamepad gamePad1;
-    // creating an object reference for robot hardware
-    public MacenumWheelsTrigger(RobotHW robotTmp, Gamepad gamepadTmp) {
+// creating an object reference for robot hardware
+
+    public MacenumWheelsTrigger(RobotHW robotTmp) {
         this.robot = robotTmp;
-        gamePad1 = gamepadTmp;
+
     }
+
+
 
 
     @Override
     public void init () {
+
     }
 
-    public void start () {
-    }
+
 
     @Override
     public void loop () {
-        // define variables for tanks drive
+        // initializing variables for tanks drive
 
-        drive = -gamePad1.left_stick_y;
-        turn = gamePad1.right_stick_x;
+        double drive = -gamepad1.left_stick_y;
+        double turn = gamepad1.right_stick_x;
 
         // calculating power for left and right wheels using previous variables
 
@@ -50,7 +51,7 @@ public class MacenumWheelsTrigger extends OpMode {
         // making sure left and right don't go over set maxvalue which is 0.8
 
         MAXVALUE = Math.max(Math.abs(left), Math.abs(right));
-        if (MAXVALUE > 0.8)
+        if (MAXVALUE > 1.0)
         {
             left /= MAXVALUE;
             right /= MAXVALUE;
@@ -71,33 +72,25 @@ public class MacenumWheelsTrigger extends OpMode {
                 }
             } */
 
-        // if statement to check if triggers are being pressed at all, if they are then give power to correct motors
+        // if statement to check if triggers are being pressed at all, if they are then give power to right motors
         // if right trigger is pressed then strafe right
-        if (MacenumPowerLeft >= 0.01) {
-            robot.leftBack.setPower(-MacenumPowerLeft);
-            robot.rightFront.setPower(-MacenumPowerRight);
-            robot.leftFront.setPower(MacenumPowerLeft);
-            robot.rightBack.setPower(MacenumPowerLeft);
+        boolean G1rightBumper = gamepad1.right_bumper;
+        boolean G1leftBumper = gamepad1.left_bumper;
+
+        if(G1rightBumper){
+            robot.leftBack.setPower(MAXVALUE);
+            robot.leftFront.setPower(-MAXVALUE);
+            robot.rightBack.setPower(-MAXVALUE);
+            robot.rightFront.setPower(MAXVALUE);
         }
-        if (MacenumPowerRight >= 0.01) {
-            robot.rightBack.setPower(-MacenumPowerLeft);
-            robot.leftFront.setPower(-MacenumPowerRight);
-            robot.rightFront.setPower(MacenumPowerRight);
-            robot.leftBack.setPower(MacenumPowerLeft);
-
-            // making sure power values don't go over max value
-            // if trigger power goes over
-        }
-        if (MacenumPowerLeft > MAXVALUE) {
-            MacenumPowerLeft = MAXVALUE;
-
-        }
-
-        if (MacenumPowerRight > MAXVALUE) {
-            MacenumPowerRight = MAXVALUE;
-
+        else if(G1leftBumper){
+            robot.leftBack.setPower(-MAXVALUE);
+            robot.leftFront.setPower(MAXVALUE);
+            robot.rightBack.setPower(MAXVALUE);
+            robot.rightFront.setPower(-MAXVALUE);
         }
 
 
     }
 }
+

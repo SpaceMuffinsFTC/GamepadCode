@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import org.firstinspires.ftc.teamcode.RobotHW;
 
 public class RobotUpDown {
 
@@ -11,7 +12,7 @@ public class RobotUpDown {
 
     public void robotDown() {
         robot.lock.setPosition(0.5);
-        robot.linearSlide.setPower(-0.2);
+        robot.linearSlide.setPower(-0.1);
     }
 
     public void robotUp() {

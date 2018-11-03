@@ -1,22 +1,23 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import org.firstinspires.ftc.teamcode.RobotHW;
 
 public class MineralArm extends OpMode {
 
-    private RobotHW robot;
-    public MineralArm(RobotHW robot){ this.robot = robot;
+    private RobotHW robotTmp;
+    public MineralArm(RobotHW robot){ this.robotTmp = robot;
     }
 
     @Override
     public void init(){
-        robot.init(hardwareMap);
+        //   robotTmp.init(hardwareMap);
     }
 
     @Override
     public void loop(){
 
         double leftStickY2 = gamepad2.left_stick_y;
-        robot.armChain.setPower(leftStickY2);
+        // robotTmp.armChain.setPower(leftStickY2);
     }
 }

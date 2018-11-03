@@ -11,7 +11,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class RobotHW {
 
+    public RobotHW(){
 
+    }
 
     /* Public OpMode members. */
     public DcMotor  leftBack;
@@ -19,12 +21,13 @@ public class RobotHW {
     public DcMotor  leftFront;
     public DcMotor  rightFront;
     public DcMotor  linearSlide;
-    public DcMotor  armChain;
+    //public DcMotor  armChain;
     public Servo lock;
 
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
+
     private ElapsedTime period  = new ElapsedTime();
 
 
@@ -40,19 +43,17 @@ public class RobotHW {
         leftFront  = hwMap.get(DcMotor.class, "leftFront");
         rightFront = hwMap.get(DcMotor.class, "rightFront");
         linearSlide = hwMap.get(DcMotor.class, "linearSlide");
-        armChain = hwMap.get(DcMotor.class, "armChain");
+        //armChain = hwMap.get(DcMotor.class, "armChain");
         lock = hwMap.get(Servo.class, "lock");
 
         final double MID_SERVO       =  0.0 ;
-        final double ARM_UP_POWER    =  0.5 ;
-        final double ARM_DOWN_POWER  = -0.5 ;
 
         leftBack.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         rightBack.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
         leftFront.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         rightFront.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
         linearSlide.setDirection(DcMotor.Direction.FORWARD);
-        armChain.setDirection(DcMotor.Direction.FORWARD);
+        //armChain.setDirection(DcMotor.Direction.FORWARD);
         lock.setDirection(Servo.Direction.FORWARD);
 
         // Set all motors to zero power
@@ -61,7 +62,7 @@ public class RobotHW {
         leftFront.setPower(0);
         rightFront.setPower(0);
         linearSlide.setPower(0);
-        armChain.setPower(0);
+        //armChain.setPower(0);
         lock.setPosition(MID_SERVO);
 
         // Set all motors to run without encoders.
@@ -71,7 +72,7 @@ public class RobotHW {
         leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         linearSlide.setMode((DcMotor.RunMode.RUN_WITHOUT_ENCODER));
-        armChain.setMode((DcMotor.RunMode.RUN_WITHOUT_ENCODER));
+        //armChain.setMode((DcMotor.RunMode.RUN_WITHOUT_ENCODER));
 
 
 
