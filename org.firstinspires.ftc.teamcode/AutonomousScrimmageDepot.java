@@ -18,7 +18,7 @@ public class AutonomousScrimmageDepot extends LinearOpMode {
     RobotHW robot = new RobotHW();
     ElapsedTime runtime = new ElapsedTime();
 
-    public void runOpMode(){
+    public void runOpMode () throws InterruptedException {
 
         double maxPower = 0.65;
 
@@ -34,71 +34,72 @@ public class AutonomousScrimmageDepot extends LinearOpMode {
         telemetry.addData("Linear Slide Status:", "Unlocked");
 
         telemetry.update();
+
         // wait for 4 seconds
-
-        //
-        // while (runtime.seconds() <= 4) {
-
+        //  while (runtime.seconds() <= 2){
+        // robot.leftBack.setPower(-0.6);
+        // robot.leftFront.setPower(-0.6);
+        // robot.rightBack.setPower(0.6);
+        // robot.rightFront.setPower(0.6);
         // }
-        // // raising linear slide a little to unhook linear slide
-        // while (runtime.seconds() <= 5){
-        //     robot.linearSlide.setPower(0.09);
 
-        // }
-        // strafe out of hook
-        while (runtime.seconds() <= 6.5) {
-            robot.leftBack.setPower(0.6);
-            robot.leftFront.setPower(-0.55);
-            robot.rightBack.setPower(0.55);
-            robot.rightFront.setPower(-0.75);
-        }
-        while (runtime.seconds() <= 7.25){
-            robot.leftBack.setPower(0.6);
-            robot.leftFront.setPower(0.6);
-            robot.rightBack.setPower(0.6);
-            robot.rightFront.setPower(0.6);
+
+
+        // wait for 4 seconds to let the robot come down
+        while (runtime.seconds() <= 4) {
         }
 
-        while (runtime.seconds() <= 8.75 ){
+        // raising linear slide a little to unhook linear slide
+        while (runtime.seconds() <= 4.5){
+            robot.linearSlide.setPower(0.09);
+
+        }
+        // turn out of hook
+        while (runtime.seconds() <= 5) {
             robot.leftBack.setPower(0.6);
             robot.leftFront.setPower(0.6);
             robot.rightBack.setPower(0.6);
             robot.rightFront.setPower(0.6);
         }
-
-        while (runtime.seconds() <= 11) {
-            robot.leftBack.setPower(-0.6);
-            robot.leftFront.setPower(0.6);
-            robot.rightBack.setPower(-0.6);
-            robot.rightFront.setPower(0.6);
-
-        }
-
-        while (runtime.seconds() <= 11.4) {
-            robot.leftBack.setPower(0.6);
-            robot.leftFront.setPower(0.6);
-            robot.rightBack.setPower(0.6);
-            robot.rightFront.setPower(0.6);
-        }
-
-        while(runtime.seconds() <=15){
+        //move backwards
+        while (runtime.seconds() <= 6) {
             robot.leftBack.setPower(0.6);
             robot.leftFront.setPower(0.6);
             robot.rightBack.setPower(-0.6);
             robot.rightFront.setPower(-0.6);
         }
+        //turn towards depot
+        while (runtime.seconds() <= 7){
+            robot.leftBack.setPower(-0.6);
+            robot.leftFront.setPower(-0.6);
+            robot.rightBack.setPower(-0.6);
+            robot.rightFront.setPower(-0.6);
+        }
+        // move towards depot
+        while (runtime.seconds() <= 8.5) {
+            robot.leftBack.setPower(0.6);
+            robot.leftFront.setPower(0.6);
+            robot.rightBack.setPower(-0.6);
+            robot.rightFront.setPower(-0.6);
+        }
+        //put team marker in depot
+        robot.teamMarker.setPosition(1.0);
+        Thread.sleep(2000);
+        robot.teamMarker.setPosition(0.3);
+        Thread.sleep(4000);
+        robot.teamMarker.setPosition(0.5);
 
 
-        //     // lower linear slide from 6.5 seconds to 8 seconds
-        //     while (runtime.seconds() > 6 && runtime.seconds() < 7.5) {
+        // lower line slide from 6.5 seconds to 8 seconds
+        while (runtime.seconds() > 6 && runtime.seconds() < 7.5) {
 
-        //         robot.linearSlide.setPower(0.1);
-        //     }
+            robot.linearSlide.setPower(0.1);
+        }
 
-        //     // back up 3.75 feet and lower arm into depot to drop team markerf
-        //     // turn left 100 degrees and move 3 feet
-        //     // move forward into crater while detetecting for obstacles
-        //     // if obstacles are detected then stop
+        // back up 3.75 feet and lower arm into depot to drop team markerf
+        // turn left 100 degrees and move 3 feet
+        // move forward into crater while detetecting for obstacles
+        // if obstacles are detected then stop
     }
 
 }

@@ -1,14 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.robot.Robot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.RobotHW;
-import org.firstinspires.ftc.teamcode.LinearSlide;
-import org.firstinspires.ftc.teamcode.MacenumWheelsTrigger;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 //Name of Opmode on phone
@@ -38,6 +37,8 @@ public class MuffinRobo extends LinearOpMode {
         double turn;
         double left = 0.1;
         double right = 0.1;
+        boolean collectionIn = gamepad2.x;
+        boolean collectionOut = gamepad2.b;
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "SpaceMuffins are ready");    //
@@ -51,20 +52,7 @@ public class MuffinRobo extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            //robot.lock.setPosition(0.5);
-
-            //right bumper locks the slide
-            if(gamepad2.right_bumper){
-                robot.lock.setPosition(180);
-                telemetry.addData("Status:","The linear slide is locked");
-                telemetry.update();
-
-            }
-            else{
-                robot.lock.setPosition(90);
-                telemetry.addData("Status:","The lock is unlocked");
-                telemetry.update();
-            }
+            robot.lock.setPosition(0.5);
 
             telemetry.addData("Move forward", "%.2f", forwardSpeed);
             telemetry.update();
@@ -116,15 +104,34 @@ public class MuffinRobo extends LinearOpMode {
                 telemetry.update();
             }
 
-            //sending updates to driver
-            // if(gamepad2.right_bumper == false){
-            //     telemetry.addData("Status:","The lock is unlocked");
-            //     telemetry.update();
-            //  }
-            // else{
-            //     telemetry.addData("Status:","The linear slide is locked");
-            //     telemetry.update();
-            //  }
+            if(gamepad2.x){
+                robot.collectionHex.setDirection(DcMotor.Direction.FORWARD);
+                robot.collectionHex.setPower(-0.8);
+            }
+            else{
+                robot.collectionHex.setPower(0);
+            }
+
+            if(gamepad2.b){
+                robot.collectionHex.setDirection(DcMotor.Direction.REVERSE);
+                robot.collectionHex.setPower(0.8);
+            }
+            else{
+                robot.collectionHex.setPower(0);
+            }
+
+            //right bumper locks the slide
+            if(gamepad2.right_bumper){
+                robot.lock.setPosition(180);
+                telemetry.addData("Status:","The linear slide is locked");
+                telemetry.update();
+
+            }
+            else{
+                robot.lock.setPosition(90);
+                telemetry.addData("Status:","The lock is unlocked");
+                telemetry.update();
+            }
 
             //pressing 'A' to move LS down
             if(gamepad2.a){
@@ -154,11 +161,13 @@ public class MuffinRobo extends LinearOpMode {
                 robot.linearSlide.setPower(gamepad2.right_stick_y);
             }
 
+
             //checking if either gamepad is receiving signals
             if(gamepad2.atRest()==true && gamepad1.atRest()==true){
                 telemetry.addData("Status", "The robot isn't receiving any signals");
                 telemetry.update();
             }
+
         }
     }
 }

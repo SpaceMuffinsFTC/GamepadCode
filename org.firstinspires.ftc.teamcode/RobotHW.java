@@ -21,7 +21,8 @@ public class RobotHW {
     public DcMotor  leftFront;
     public DcMotor  rightFront;
     public DcMotor  linearSlide;
-    //public DcMotor  armChain;
+    public Servo    teamMarker;
+    public DcMotor  collectionHex;
     public Servo lock;
 
 
@@ -43,7 +44,8 @@ public class RobotHW {
         leftFront  = hwMap.get(DcMotor.class, "leftFront");
         rightFront = hwMap.get(DcMotor.class, "rightFront");
         linearSlide = hwMap.get(DcMotor.class, "linearSlide");
-        //armChain = hwMap.get(DcMotor.class, "armChain");
+        teamMarker = hwMap.get(Servo.class, "teamMarker");
+        collectionHex = hwMap.get(DcMotor.class, "collectionHex");
         lock = hwMap.get(Servo.class, "lock");
 
         final double MID_SERVO       =  0.0 ;
@@ -53,8 +55,9 @@ public class RobotHW {
         leftFront.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
         rightFront.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
         linearSlide.setDirection(DcMotor.Direction.FORWARD);
-        //armChain.setDirection(DcMotor.Direction.FORWARD);
+        collectionHex.setDirection(DcMotor.Direction.FORWARD);
         lock.setDirection(Servo.Direction.FORWARD);
+        teamMarker.setDirection(Servo.Direction.REVERSE);
 
         // Set all motors to zero power
         leftBack.setPower(0);
@@ -62,8 +65,9 @@ public class RobotHW {
         leftFront.setPower(0);
         rightFront.setPower(0);
         linearSlide.setPower(0);
-        //armChain.setPower(0);
+        collectionHex.setPower(0);
         lock.setPosition(MID_SERVO);
+        teamMarker.setPosition(0.0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
@@ -72,11 +76,9 @@ public class RobotHW {
         leftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         linearSlide.setMode((DcMotor.RunMode.RUN_WITHOUT_ENCODER));
-        //armChain.setMode((DcMotor.RunMode.RUN_WITHOUT_ENCODER));
+        collectionHex.setMode((DcMotor.RunMode.RUN_WITHOUT_ENCODER));
 
 
-
-        // Define and initialize ALL installed servos.
 
     }
 }
