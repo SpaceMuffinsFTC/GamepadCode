@@ -11,9 +11,9 @@ import org.firstinspires.ftc.teamcode.RobotHW;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 //Name of Opmode on phone
-@TeleOp(name="MuffinRobo: Practice", group="Practice")
+@TeleOp(name="Muffin Robo - Worlds", group="Worlds")
 
-public class MuffinRobo extends LinearOpMode {
+public class RealMuffinRobo extends LinearOpMode {
 
     /* Declare OpMode members. */
     RobotHW robot = new RobotHW();
@@ -39,6 +39,7 @@ public class MuffinRobo extends LinearOpMode {
         double right = 0.1;
         boolean collectionIn = gamepad2.x;
         boolean collectionOut = gamepad2.b;
+        double maxvalue = 0.8;
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Say", "SpaceMuffins are ready");    //
@@ -52,7 +53,7 @@ public class MuffinRobo extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
-            robot.lock.setPosition(0.5);
+            //robot.lock.setPosition(0.5);
 
             telemetry.addData("Move forward", "%.2f", forwardSpeed);
             telemetry.update();
@@ -120,52 +121,49 @@ public class MuffinRobo extends LinearOpMode {
                 robot.collectionHex.setPower(0);
             }
 
-            //right bumper locks the slide
-            if(gamepad2.right_bumper){
-                robot.lock.setPosition(180);
-                telemetry.addData("Status:","The linear slide is locked");
-                telemetry.update();
-
-            }
-            else{
-                robot.lock.setPosition(90);
-                telemetry.addData("Status:","The lock is unlocked");
-                telemetry.update();
-            }
 
             //pressing 'A' to move LS down
-            if(gamepad2.a){
-                robot.linearSlide.setPower(-0.95);
+            // if(gamepad2.a){
+            //     robot.linearSlide.setPower(-0.95);
 
-                telemetry.addData("Status:","The linear slide is going down");
+            //     telemetry.addData("Status:","The linear slide is going down");
 
-                telemetry.update();
-            }
+            //     telemetry.update();
+            // }
 
-            //keeping linear slide power lower than +(-) 0.2
-            if(gamepad2.right_stick_y > 0.2){
-                robot.linearSlide.setPower(-0.2);
+            robot.linearSlide.setPower(rightstickY2);
+
+            //keeping linear slide power lower than +(-) 0.7
+            if(gamepad2.right_stick_y > 0.7){
+                robot.linearSlide.setPower(maxvalue);
             }
             else{
                 robot.linearSlide.setPower(gamepad2.right_stick_y);
             }
 
             //to prevent gamepad from moving LS down
-            if(gamepad2.right_stick_y < 0){
-                robot.linearSlide.setPower(0);
+            // if(gamepad2.right_stick_y < 0){
+            //     robot.linearSlide.setPower(0);
 
-                telemetry.addData("Don't do that:","Use button A to move linear slide down");
-                telemetry.update();
-            }
-            else{
-                robot.linearSlide.setPower(gamepad2.right_stick_y);
-            }
+            //     telemetry.addData("Don't do that:","Use button A to move linear slide down");
+            //     telemetry.update();
+            // }
+            // else{
+            //     robot.linearSlide.setPower(gamepad2.right_stick_y);
+            // }
 
 
             //checking if either gamepad is receiving signals
             if(gamepad2.atRest()==true && gamepad1.atRest()==true){
                 telemetry.addData("Status", "The robot isn't receiving any signals");
                 telemetry.update();
+            }
+
+            if(gamepad2.left_bumper){
+                robot.teamMarker.setPosition(0.7);
+            }
+            else{
+                robot.teamMarker.setPosition(0);
             }
 
         }
